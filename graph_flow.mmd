@@ -1,0 +1,21 @@
+flowchart LR
+    subgraph User Flow
+        U1([User Query])
+        U2[Entry Node]
+        U3[ClassifyIntent Node]
+        U4{Requires Human?}
+        U5[RAG Node]
+        U6[HumanEscalation Node]
+        U7[(END)]
+        U1 --> U2 --> U3 --> U4
+        U4 -- No --> U5 --> U7
+        U4 -- Yes --> U6 --> U7
+    end
+
+    subgraph Admin Flow
+        A1([Admin Review])
+        A2[Entry Node]
+        A3[AdminApproval Node]
+        A4[(END)]
+        A1 --> A2 --> A3 --> A4
+    end
